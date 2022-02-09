@@ -69,8 +69,8 @@ def create_base_frame():
 def render_optional_explanation():
     with st.expander("See explanation behind calculation"):
         st.write("Success formula:")
-        ex_multip = BM_MULTIPLIER["Master"]
-        ex_base = BM_BASE["Master"]
+        ex_multip = BM_MULTIPLIER["Adept Blood Mage"]
+        ex_base = BM_BASE["Adept Blood Mage"]
         st.markdown(
             """
         ```
@@ -84,7 +84,7 @@ def render_optional_explanation():
         st.markdown(
             f"""
         ```
-        Player as master Blood Mage (rank 3) has 2 positive traits and 20 learning
+        Player as master Adept Blood Mage (rank 3) has 2 positive traits and 20 learning
         Target has 11 learning
 
         Positive  = {SUCCESS_CHANCE_BASE} + (20 - 11) * {ex_multip} + {ex_base} = 66
