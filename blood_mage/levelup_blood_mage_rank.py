@@ -6,18 +6,30 @@ SUCCESS_CHANCE_BASE = 0
 FAIL_CHANCE_BASE = 10
 LEVEL_MULTIPLIER = 2
 
-NOVICE = 0
-REGULAR = 30
-MASTER = 90
-ARCH = 270
-
 LEARNING = "Learning"
 BM_LEVELS = {
-    "Novice": NOVICE,
-    "Regular": REGULAR,
-    "Master": MASTER,
-    "Arch": ARCH,
+    "Blood Mage Initiate": 0,
+    "Blood Mage Disciple": 25,
+    "Adept Blood Mage": 50,
+    "Master Blood Mage": 75,
+    "Grandmaster Blood Mage": 100,
+    "Arch Blood Mage": 150,
+    "The Exalted": 200,
+    "The Supreme": 250,
+    "The Divine": 300,
 }
+BM_MULTIPLIER = {
+    "Blood Mage Initiate": 1,
+    "Blood Mage Disciple": 3,
+    "Adept Blood Mage": 5,
+    "Master Blood Mage": 7,
+    "Grandmaster Blood Mage": 9,
+    "Arch Blood Mage": 11,
+    "The Exalted": 13,
+    "The Supreme": 16,
+    "The Divine":21,
+}
+
 
 
 @st.cache(allow_output_mutation=True)
@@ -27,10 +39,8 @@ def create_base_frame():
     df = pd.DataFrame(learning)
     df["SUCCESS_CHANCE_BASE"] = SUCCESS_CHANCE_BASE
     df["FAIL_CHANCE_BASE"] = FAIL_CHANCE_BASE
-    df["MULTIPLIER_NOVICE"] = NOVICE
-    df["MULTIPLIER_REGULAR"] = REGULAR
-    df["MULTIPLIER_MASTER"] = MASTER
-    df["MULTIPLIER_ARCH"] = ARCH
+    for lvl in BM_MULTIPLIER.keys():
+        df[f"{lvl.upper()}_MULTIPLIER"] = BM_MULTIPLIER[lvl]
     return df
 
 

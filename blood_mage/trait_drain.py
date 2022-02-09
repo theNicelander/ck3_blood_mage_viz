@@ -9,22 +9,29 @@ LEARNING_CHALLENGE = "Difference in Learning"
 
 SUCCESS_CHANCE_BASE = 0
 FAIL_CHANCE_BASE = 10
-LEVEL_MULTIPLIER = 2
 TRAIT_MALICE = 10
 
 BM_BASE = {
-    "Novice": 0,
-    "Regular": 10,
-    "Master": 30,
-    "Arch": 90,
-    "Supreme": 270,
+    "Blood Mage Initiate": 0,
+    "Blood Mage Disciple": 25,
+    "Adept Blood Mage": 50,
+    "Master Blood Mage": 75,
+    "Grandmaster Blood Mage": 100,
+    "Arch Blood Mage": 150,
+    "The Exalted": 200,
+    "The Supreme": 250,
+    "The Divine": 300,
 }
 BM_MULTIPLIER = {
-    "Novice": 1,
-    "Regular": 2,
-    "Master": 4,
-    "Arch": 7,
-    "Supreme": 12,
+    "Blood Mage Initiate": 1,
+    "Blood Mage Disciple": 3,
+    "Adept Blood Mage": 5,
+    "Master Blood Mage": 7,
+    "Grandmaster Blood Mage": 9,
+    "Arch Blood Mage": 11,
+    "The Exalted": 13,
+    "The Supreme": 16,
+    "The Divine":21,
 }
 
 BM_MALUS_LOOKUP = {
@@ -89,8 +96,6 @@ def render_optional_explanation():
         st.write("-----------------------------------------")
 
         st.text(f"Base modifier of success: {SUCCESS_CHANCE_BASE}")
-        st.text(f"Modifier multiplier for learning: {LEVEL_MULTIPLIER}")
-
         st.text(f"Base modifier of failure: {FAIL_CHANCE_BASE}")
 
         df_multi = pd.DataFrame([BM_BASE, BM_MULTIPLIER]).T.rename(
@@ -173,9 +178,15 @@ def get_selection_malus():
 
 def trait_drain_sidebar_explanations():
     render_line()
-    st.sidebar.write("Trait drain is a way for a blood mage to drain a positive trait from their target")
-    st.sidebar.write("- The more `positive traits` you already have, the less successful you will be")
-    st.sidebar.write("- The higher your `learning` and `blood mage trait` are, the more successful you'll be")
+    st.sidebar.write(
+        "Trait drain is a way for a blood mage to drain a positive trait from their target"
+    )
+    st.sidebar.write(
+        "- The more `positive traits` you already have, the less successful you will be"
+    )
+    st.sidebar.write(
+        "- The higher your `learning` and `blood mage trait` are, the more successful you'll be"
+    )
 
 
 def render_trait_drain():
